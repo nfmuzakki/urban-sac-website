@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="./assets/img/logo_stis.png">
+	<title>Segment Any Change</title>
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="assets/css/mediumish.css" rel="stylesheet">
+	<!-- Chart JS Template -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+<body>
+
+<!-- Begin Nav -->
+<nav class="navbar navbar-light fixed-top bg-white shadow-sm py-3">
+  <div class="container d-flex align-items-center justify-content-between w-100">
+    
+    <!-- Left side: Logo + Title -->
+    <div class="d-flex align-items-center">
+      <img src="./assets/img/logo_stis.png" alt="logo" height="40" class="mr-3">
+      <div>
+        <h5 class="mb-0 font-weight-bold">Segment Any Change</h5>
+		<small class="text-muted">for Urban Change Detection</small>
+      </div>
+    </div>
+
+    <!-- Right side: Navigation -->
+    <div class="d-flex align-items-center">
+      <ul class="navbar-nav d-flex flex-row" style="gap: 1.5rem;">
+        <li class="nav-item mx-2">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="hyperparameter.html">Best Hyperparameter</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="sentinel-2.html">Sentinel-2</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="worldview-3.html">WorldView-3</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="https://github.com/"><i class="fab fa-github fa-lg"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Begin of Header Image -->
+<section style="position: relative; min-height: 100vh; overflow: hidden;">
+	<video autoplay muted loop playsinline 
+			style="position: absolute; top: 0; left: 0; width: 100%; height: 90%; object-fit: cover; z-index: -1;">
+		<source src="assets/vid/Jakarta, Indonesia - Earth Timelapse.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+
+    <!-- Semi transparent overlay -->
+    <div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0,0,0,0.6); z-index: 1; height: 90%;"></div>
+
+    <!-- Research Title -->
+    <div class="research-title d-flex align-items-center justify-content-start text-white text-start" style="position: relative; z-index: 2; min-height: 95vh; padding: 1rem 1rem 4rem 1rem;">
+		<div class="col-md-10 col-lg-8 px-3 pt-5">
+			<h1 class="display-4 mb-4" style="font-weight: 600; ">
+				Pemantauan Pertumbuhan Perkotaan dengan Zero-Shot Change Detection menggunakan Segment Any Change
+			</h1>
+			<p class="fs-6" style="font-weight: 500;">
+				Naufal Fadli Muzakki (4SD1, 222112245)
+			</p>
+		</div>
+	</div>
+
+</section>
+<!-- End of Header Image -->
+
+
+<!-- Begin Article
+================================================== -->
+<div class="container px-5">
+	<div class="row">
+
+		<!-- Begin Post -->
+		<div class="col-md-12 col-md-offset-2 col-xs-12">
+
+			<!-- Begin Post Content -->
+			<div class="article-post">
+
+				<div class="city-introduction" style="padding-top: 1.5rem;">
+					<h1 class="section-title"><b>Pertumbuhan Kawasan Perkotaan</b></h1>
+				
+
+					<blockquote>
+						Kawasan Perkotaan adalah wilayah yang mempunyai kegiatan utama bukan pertanian dengan susunan fungsi kawasan sebagai tempat permukiman perkotaan, pemusatan dan distribusi pelayanan jasa pemerintahan, pelayanan sosial, dan kegiatan ekonomi (PP Nomor 59 Tahun 2022 tentang Perkotaan)
+					</blockquote>
+					<p style="text-align: justify; font-size: 13pt;">
+						Kawasan perkotaan menampung lebih dari separuh populasi penduduk Indonesia. Berdasarkan data Badan Pusat Statistik pada tahun 2022, sebesar 56,4% penduduk tinggal di kawasan perkotaan, angka ini diproyeksikan meningkat menjadi 66,6% pada tahun 2035. Peningkatan jumlah penduduk yang tinggal di kawasan perkotaan akan berbanding lurus dengan meningkatnya permintaan akan lahan permukiman (Munibah et al., 2019).
+					</p>
+ 
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/lahan permukiman.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 550px; display: block; margin: 0 auto;">
+						<figcaption style="font-size: 12px; color: #555; margin-top: 0.5rem;">
+							Gambar 1. Grafik pertumbuhan luas lahan permukiman di Indonesia 
+						</figcaption>
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Tutupan lahan kategori permukiman di Indonesia menunjukkan peningkatan sebesar 69,11% dari tahun 2014 hingga 2023. Pemantauan terhadap perubahan struktur kawasan perkotaan menjadi aspek penting dalam perencanaan kota yang berkelanjutan, pembangunan wilayah, dan analisis sosial-ekonomi (Fyleris et al., 2022). Informasi ini dapat dimanfaatkan untuk memahami dinamika pertumbuhan kawasan perkotaan serta mendukung pencapaian Tujuan Pembangunan Berkelanjutan (SDGs) yang ke-11, khususnya target 11.3.
+					</p>
+
+					<blockquote>
+						“By 2030, enhance inclusive and sustainable urbanization and capacity for participatory, integrated and sustainable human settlement planning and management in all countries”
+					</blockquote>
+					<br>
+				</div>
+
+				<div class="data-fusion-introduction" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Pemantauan Pertumbuhan Perkotaan melalui Citra Satelit Optik</b></h1>
+					<p style="text-align: justify; font-size: 13pt;">
+						Citra satelit optik adalah gambar yang diambil oleh satelit menggunakan sensor optik untuk merekam informasi yang ada di permukaan bumi. Sensor optik pada satelit mendeteksi cahaya tampak (visible light) dan radiasi inframerah dekat (near infrared), yang dipantulkan oleh objek di permukaan bumi. Terdapat empat kategori resolusi spasial citra satelit optik, yaitu sangat tinggi, tinggi, menengah, dan rendah. 
+					</p>
+					
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/tabel resolusi.png" alt="Kategori Resolusi Spasial" style="width: 100%; max-width: 550px; display: block; margin: 0 auto;">
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Pemantauan pertumbuhan kawasan perkotaan umumnya dilakukan melalui analisis citra satelit optik, baik beresolusi menengah seperti Sentinel-2 maupun sangat tinggi seperti WorldView-3.
+					</p>
+
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/s2_vs_wv3.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 300px; display: block; margin: 0 auto;">
+						<figcaption style="font-size: 12px; color: #555; margin-top: 0.5rem;">
+							Gambar 2. Perbandingan Sentinel-2 dan WorldView-3 untuk Pemantauan Pertumbuhan Perkotaan 
+						</figcaption>
+					</figure>
+					
+					<p style="text-align: justify; font-size: 13pt;">
+						Sebagai ilustrasi, Gambar 2 memperlihatkan perbandingan visual antara dua jenis citra satelit. Citra resolusi menengah memiliki keterbatasan dalam mendeteksi perubahan visual secara langsung karena ukuran piksel yang besar, sehingga analisis pertumbuhan perkotaan biasanya bergantung pada klasifikasi tutupan lahan menggunakan indeks spektral. Sementara itu, citra resolusi sangat tinggi mampu menangkap detail visual seperti bentuk bangunan dan jalan, namun deteksi perubahannya sangat bergantung pada model deep learning yang memerlukan data pelatihan dalam jumlah besar.
+					</p>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Kedua pendekatan tersebut menghadapi tantangan yang sama, yaitu <b>ketergantungan tinggi terhadap data latih berskala besar</b> dan perlunya <b>fine-tuning</b> untuk mendeteksi perubahan pada <b>data baru yang belum pernah dikenali sebelumnya</b>. Keterbatasan ini menunjukkan perlunya pendekatan baru yang lebih efisien dan fleksibel.
+					</p>
+				</div>
+
+				<div class="data-fusion-introduction" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Zero-Shot Learning: Model Bebas Pelatihan</b></h1>
+					<p style="text-align: justify; font-size: 13pt;">
+						Sebagai respon terhadap tantangan ketergantungan model terhadap data pelatihan, pendekatan baru seperti zero-shot learning mulai banyak dikembangkan dan diterapkan di bidang penginderaan jauh. Pendekatan ini memungkinkan model untuk menganalisis data yang belum pernah dilihat sebelumnya tanpa memerlukan pelatihan ulang (Pourpanah et al., 2022), sehingga menawarkan alternatif yang efisien terhadap metode konvensional yang bergantung pada fine tuning.  
+					</p>
+					
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/zsl.png" alt="Zero-Shot Learning" style="width: 100%; max-width: 750px; display: block; margin: 0 auto;">
+						<figcaption style="font-size: 12px; color: #555; margin-top: 0.5rem;">
+							Gambar 3. Perbandingan Konsep Traditional Supervised Learning dan Zero-Shot Learning
+						</figcaption>
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Gambar 3 menunjukkan perbedaan mendasar antara pendekatan Traditional Supervised Learning dan Zero-Shot Learning dalam machine learning. Pada pendekatan tradisional, model hanya mampu mengenali kelas yang sudah pernah dilihat selama pelatihan, karena prosesnya bergantung pada pasangan data dan label yang eksplisit. Jika model dihadapkan pada kelas baru yang belum pernah dilatih, seperti zebra, maka model akan gagal mengenalinya tanpa dilakukan pelatihan ulang atau fine-tuning. Sebaliknya, Zero-Shot Learning memungkinkan model untuk mengenali kelas baru yang belum pernah dilihat sebelumnya, dengan mengandalkan deskripsi atribut umum seperti bentuk tubuh kuda, warna hitam-putih, dan pola garis. Dengan menggunakan pengetahuan semantik atau atribut yang dapat digeneralisasi, model dapat menginferensikan bahwa objek baru yang sesuai dengan deskripsi tersebut adalah seekor zebra. Pendekatan ini membuat model lebih fleksibel dan efisien karena tidak memerlukan pelatihan ulang saat dihadapkan pada data atau kelas baru.
+					</p>
+					<p style="text-align: justify; font-size: 13pt;">
+						Pendekatan Zero-Shot Learning ini menjadi solusi yang relevan untuk mengatasi tantangan dalam pemodelan pertumbuhan kawasan perkotaan, khususnya ketika data pelatihan yang tersedia tidak mencakup seluruh variasi atau pola perubahan yang terjadi di masa depan. Dalam konteks perubahan penggunaan lahan, seperti alih fungsi lahan menjadi kawasan terbangun, sering kali muncul jenis atau bentuk perubahan baru yang belum pernah terekam dalam data historis. Dengan Zero-Shot Learning, model dapat mengenali pola perubahan tersebut meskipun belum pernah dilatih secara eksplisit untuk mendeteksinya, karena model mengandalkan atribut semantik atau pengetahuan umum tentang karakteristik kawasan terbangun. Ini sangat bermanfaat untuk analisis multitemporal berbasis citra satelit, di mana dinamika urbanisasi sangat cepat dan kompleks, serta sering kali tidak sepenuhnya tercakup dalam data pelatihan yang terbatas.
+					</p>
+				</div>
+				
+				<div class="urban-sensing-fusion" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Segment Any Change untuk Pemantauan Pertumbuhan Kawasan Perkotaan</b></h1>
+					<p style="text-align: justify; font-size: 13pt;">
+						Salah satu metode terbaru dalam konsep zero-shot learning yang dapat digunakan untuk mendeteksi pertumbuhan kawasan perkotaan melalui citra satelit tanpa perlu data latih adalah Segment Any Change (SAC) [18]. Metode ini merupakan model pendeteksian perubahan pada citra satelit dengan kemampuan zero-shot yang merupakan pengembangan dari Segment Anything Model (SAM). Meskipun SAM memiliki kemampuan generalisasi yang kuat, model ini awalnya tidak dirancang untuk tugas pendeteksian perubahan [19]. SAC mengatasi tantangan ini dengan menggunakan bitemporal latent matching, yaitu metode yang membandingkan kesamaan latar laten antar-citra dari dua waktu berbeda untuk mendeteksi perubahan tanpa pelatihan. Pendekatan ini memungkinkan model untuk mempertahankan sifat utama SAM, yaitu promptability dan generalisasi zero-shot. SAC menyediakan mekanisme point query untuk pendeteksian perubahan berbasis objek. Dengan memilih satu atau beberapa titik pada objek yang diinginkan, SAC dapat menghasilkan mask perubahan yang berpusat pada semantik objek tersebut, memungkinkan pendeteksian perubahan berbasis objek.
+					</p>
+
+					<figure>
+						<img src="./assets/img/komponenSAC.png" style="width: 100%; max-width: 550px; display: block; margin: 0 auto;">
+						<figcaption style="font-size: 12px; color: #555; margin-top: 0.5rem; text-align: center;">
+							Gambar 4. Komponen Model Segment Any Change
+						</figcaption>
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Gambar 4 menunjukkan komponen-komponen dalam model SAC. Dalam prosesnya, SAM menerima titik-titik grid p_i sebagai prompt dan citra input pada waktu t, lalu menghasilkan object masks m_(t,i)   dan image embedding z_t. Selanjutnya, bitemporal latent matching digunakan untuk mencocokkan embedding secara dua arah antara waktu t dan t+1, guna menghitung confidence score terhadap setiap usulan perubahan (change proposal). Hasilnya kemudian difilter menggunakan metode top-k sorting atau thresholding untuk mendeteksi perubahan tanpa pelabelan eksplisit (zero-shot). Sementara itu, terdapat mekanisme point query yang memungkinkan memilih titik-titik tertentu untuk menyaring mask perubahan yang bersifat class-agnostic menggunakan kesamaan semantik, sehingga deteksi lebih terfokus pada perubahan objek tertentu.
+					</p>
+					<br>
+					<h4><b>Konfigurasi Hyperparameter Segment Any Change untuk Pertumbuhan Kawasan Perkotaan</b></h4>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/hyperparameter.png" style="width: 100%; max-width: 540px; padding: 0rem 3.5rem 0rem 3.5rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Penelitian ini melakukan analisis sensitivitas terhadap berbagai kombinasi hyperparameter yang digunakan dalam dua komponen utama, yaitu Segment Anything Model (SAM) dan Segment Any Change (SAC). Tujuannya adalah untuk mengetahui konfigurasi model terbaik pada setiap jenis input citra (Sentinel-2 dan WorldView-3) dalam mendeteksi penambahan area terbangun pada citra satelit optik.
+							</p>
+
+							<a href="hyperparameter.html" class="blog-button">
+							<span class="icon-circle">
+								<span class="arrow">&rarr;</span>
+							</span>
+							<span class="text">Read more</span>
+							</a>
+						</div>
+					</div>
+
+					<h4><b>Segment Any Change dengan Input Indeks Spektral Citra Satelit Optik Resolusi Menengah Sentinel-2</b></h4>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/sentinel-2.png" style="width: 100%; max-width: 340px;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Segmentasi perubahan kawasan perkotaan umumnya dilakukan menggunakan citra beresolusi sangat tinggi. Namun, citra jenis ini memiliki keterbatasan dalam hal ketersediaan dan biaya yang tinggi. Oleh karena itu, penelitian ini juga menguji kemampuan model Segment Any Change dalam mendeteksi perubahan kawasan terbangun menggunakan citra beresolusi menengah. Untuk mengatasi keterbatasan resolusi spasial, digunakan beberapa skenario input berupa indeks spektral yang dalam penelitian sebelumnya terbukti mampu merepresentasikan area terbangun.
+							</p>
+
+							<a href="sentinel-2.html" class="blog-button">
+							<span class="icon-circle">
+								<span class="arrow">&rarr;</span>
+							</span>
+							<span class="text">Read more</span>
+							</a>
+						</div>
+					</div>
+
+					<h4><b>Segment Any Change dengan Input Citra Satelit Optik Resolusi Sangat Tinggi WorldView-3</b></h4>
+					<div class="image-paragraph-container">
+						<figure class="image-side">
+							<img src="./assets/img/WorldView.png" alt="WorldView-3"
+								style="width: 100%; max-width: 550px;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Penelitian ini mengikuti prinsip remote sensing image fusion, yang merupakan pengembangan dari kerangka multi-source data fusion yang dispesifikan pada input data berupa citra satelit. Untuk memastikan alur penelitian yang konsisten dan terstandar, dikembangkan sebuah framework bernama Urban Sensing Fusion. Framework ini mencakup kerangka tahap akuisisi data, pre-processing, pixel level image fusion, hingga klasifikasi wilayah perkotaan. Berikut disajikan rancangan framework yang dibangun.
+							</p>
+
+							<a href="worldview-3.html" class="blog-button">
+							<span class="icon-circle">
+								<span class="arrow">&rarr;</span>
+							</span>
+							<span class="text">Read more</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Post Content -->
+
+			<!-- Begin Tags -->
+			<div class="after-post-tags">
+				<ul class="tags">
+					<li><a href="#">Change Detection</a></li>
+					<li><a href="#">Zero-Shot Learning</a></li>
+					<li><a href="#">Segment Any Change</a></li>
+					<li><a href="#">Segment Anything Model</a></li>
+					<li><a href="#">Sentinel-2</a></li>
+					<li><a href="#">WorldView-3</a></li>
+					<li><a href="#">Urban Growth</a></li>
+				</ul>
+			</div>
+			<!-- End Tags -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+<div class="hideshare"></div>
+
+<!-- Begin Footer
+================================================== -->
+<div class="container">
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2025 Naufal Fadli Muzakki
+		</p>
+		<p class="pull-right">
+			 Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+<!-- End Footer
+================================================== -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="assets/js/mediumish.js"></script>
+
+</body>
+</html>

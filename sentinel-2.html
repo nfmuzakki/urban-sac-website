@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="./assets/img/logo_stis.png">
+	<title>Segment Any Change</title>
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="assets/css/mediumish.css" rel="stylesheet">
+	<!-- Chart JS Template -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+<body>
+
+<!-- Begin Nav -->
+<nav class="navbar navbar-light fixed-top bg-white shadow-sm py-3">
+  <div class="container d-flex align-items-center justify-content-between w-100">
+    
+    <!-- Left side: Logo + Title -->
+    <div class="d-flex align-items-center">
+      <img src="./assets/img/logo_stis.png" alt="logo" height="40" class="mr-3">
+      <div>
+        <h5 class="mb-0 font-weight-bold">Segment Any Change</h5>
+		<small class="text-muted">for Urban Change Detection</small>
+      </div>
+    </div>
+
+    <!-- Right side: Navigation -->
+    <div class="d-flex align-items-center">
+      <ul class="navbar-nav d-flex flex-row" style="gap: 1.5rem;">
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="hyperparameter.html">Best Hyperparameter</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link active" href="sentinel-2.html">Sentinel-2</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="worldview-3.html">WorldView-3</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="https://github.com/"><i class="fab fa-github fa-lg"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Nav -->
+
+
+
+<!-- Begin Article
+================================================== -->
+<div class="container px-5">
+	<div class="row">
+
+		<!-- Begin Post -->
+		<div class="col-md-12 col-md-offset-2 col-xs-12">
+
+			<!-- Begin Post Content -->
+			<div class="article-post">
+				<div class="urban-sensing-fusion" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Ekstraksi Area Terbangun melalui Indeks Spektral</b></h1>
+					<p style="text-align: justify; font-size: 13pt;">
+						Kawasan perkotaan yang kompleks, di mana kepadatan bangunan dan fitur yang bervariasi menjadikan penggunaan citra satelit resolusi menengah untuk pemantauan pertumbuhan perkotaan memiliki keterbatasan (Qian et al., 2020). Untuk mengatasi keterbatasan tersebut, digunakan beberapa indeks spektral yang dalam penelitian Kebede et al. (2022) terbukti mampu merepresentasikan area terbangun.
+					</p>
+					<h4><b>1. Normalized Built-Up Area Index (NBAI)</b></h4>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/NBAI.png" style="width: 100%; max-width: 540px; padding: 1rem 1rem 0rem 1.5rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Indeks ini mampu mendeteksi serta memetakan area terbangun dan tanah terbuka, khususnya membedakan permukaan impervious (seperti beton, atap, jalan) dari pervious (seperti vegetasi atau tanah alami).
+							</p>
+						</div>
+					</div>
+
+					<h4><b>2. Normalized Difference Built-Up Index (NDBI)</b></h4>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/NDBI.png" style="width: 100%; max-width: 540px; padding: 1rem 1rem 0rem 1.5rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Indeks ini mampu mengidentifikasi area terbangun dan memberikan informasi kepadatan bangunan di wilayah perkotaan.
+							</p>
+						</div>
+					</div>
+
+					<h4><b>3. Built-Up Index (BUI)</b></h4>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/BUI.png" style="width: 100%; max-width: 540px; padding: 1rem 1rem 0rem 1.5rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Indeks ini mampu mengidentifikasi dan memetakan area perkotaan atau bangunan dengan mengurangi efek vegetasi yang terdeteksi oleh NDVI dari deteksi area yang dibangun oleh NDBI.
+							</p>
+						</div>
+					</div>
+
+					<p style="text-align: justify; font-size: 12pt;">Citra diambil dalam bentuk pasangan multitemporal (citra pada waktu t dan t+1) yang kemudian dipilih pada tiga level zoom berbeda seperti pada tabel untuk mengevaluasi pengaruh tingkat detail citra terhadap performa deteksi perubahan.</p>
+
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/tabelzoom.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 350px; display: block; margin: 0 auto;">
+					</figure>
+
+				</div>
+
+				<div class="city-introduction" style="padding-top: 1.5rem;">
+					<h1 class="section-title"><b>Hasil Segmentasi Perubahan Area Terbangun menggunakan Segment Any Change</b></h1>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Pada eksperimen segmentasi perubahan menggunakan SAC dengan input indeks spektral citra satelit optik resolusi menengah Sentinel-2, dilakukan pengujian terhadap tiga jenis indeks spektral, yaitu NBAI, NDBI, dan BUI dengan tiga level zoom berbeda (level 1, 2, dan 3). 
+					</p>
+ 
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/hasilsentinel.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%;display: block; margin: 0 auto;">
+						<figcaption style="font-size: 12px; color: #555; margin-top: 0.5rem;">
+							Catatan: True Positive ditunjukkan dengan warna putih, True Negative ditunjukkan dengan warna hitam, dan False Positive + False Negative ditunjukkan dengan warna merah.
+						</figcaption>
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Hasil segmentasi menunjukkan bahwa performa segmentasi sangat dipengaruhi oleh jenis indeks spektral dan resolusi spasial (level zoom) yang digunakan sebagai input. Secara umum, baik NBAI maupun BUI menunjukkan performa yang masih kurang optimal di semua level zoom karena mayoritas prediksi masih didominasi oleh false positive dan false negative. Namun, level zoom 3 untuk NBAI dan BUI memperlihatkan sedikit bagian true positive, yang berarti ada area yang berhasil diidentifikasi secara akurat. Sebaliknya, penggunaan indeks NDBI menunjukkan hasil yang jauh lebih baik dibandingkan dua indeks lainnya. Pada level zoom 2, NDBI menghasilkan segmentasi dengan kualitas paling optimal. 
+					</p>
+					<p style="text-align: justify; font-size: 13pt;">
+						Evaluasi kuantitatif Menggunakan metrik F1-score, IoU, precision, dan recall juga menunjukkan bahwa level zoom 2 dengan input NDBI mencatat nilai tertinggi pada seluruh metrik evaluasi, seperti F1-score sebesar 54%, IoU sebesar 36,99%, dan precision sebesar 66,51%. Sebaliknya, kombinasi lain tidak mampu menghasilkan nilai evaluasi setinggi itu. Hal ini menunjukkan bahwa kombinasi NDBI dengan level zoom 2 memberikan keseimbangan terbaik antara akurasi deteksi perubahan dan jumlah area yang tersegmentasi dengan benar.
+					</p>
+				</div>
+
+				<div class="data-fusion-introduction" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Estimasi Luas Pertumbuhan Kawasan Perkotaan Jakarta Utara dengan Segment Any Change berbasis NDBI</b></h1>
+
+					<div class="image-paragraph-container">
+						<figure style="text-align: center; margin: 1.5rem auto;">
+						<video autoplay muted loop playsinline style="width: 100%; max-width: 550px; display: block; margin: 0 auto;">
+							<source src="./assets/vid/samplingsentinel.mp4" type="video/mp4">
+							Browser Anda tidak mendukung tag video.
+						</video>
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 13pt;">
+								Estimasi dilakukan dengan metode stratified random sampling, di mana satu sampel grid diambil dari setiap kelurahan untuk mewakili total 31 kelurahan di wilayah tersebut. Hasil estimasi luas pertumbuhan kawasan perkotaan dari model SAC kemudian dibandingkan dengan hasil perhitungan luas area yang berubah dari kategori non-built menjadi built pada peta tutupan lahan Dynamic World V1 dan ESRI Land Cover. 
+							</p>
+						</div>
+					</div>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Hasil evaluasi menunjukkan bahwa metode Segment Any Change menghasilkan estimasi yang paling akurat, Model ini unggul dalam semua metrik evaluasi estimasi, yaitu MAE (0,2068), MSE (0,3951), RMSE (0,6286), dan R-square (28,38%), Sebaliknya, metode berbasis Dynamic World V1 dan ESRI Land Cover menunjukkan performa yang jauh lebih rendah, bahkan menghasilkan nilai R-square negatif, yang mengindikasikan hubungan yang sangat lemah dengan data aktual (ground truth), Dengan demikian, SAC berbasis NDBI Sentinel-2 terbukti menjadi pendekatan yang lebih andal untuk memetakan dan memprediksi pertumbuhan kawasan perkotaan.
+					</p>
+
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/estimasisentinel.png" alt="Kategori Resolusi Spasial" style="width: 100%; max-width: 450px; display: block; margin: 0 auto;">
+					</figure>
+				</div>
+
+				
+			</div>
+			<!-- End Post Content -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+<div class="hideshare"></div>
+
+<!-- Begin Footer
+================================================== -->
+<div class="container">
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2025 Naufal Fadli Muzakki
+		</p>
+		<p class="pull-right">
+			 Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+<!-- End Footer
+================================================== -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="assets/js/mediumish.js"></script>
+
+</body>
+</html>

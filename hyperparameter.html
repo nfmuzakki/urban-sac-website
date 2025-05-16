@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="./assets/img/logo_stis.png">
+	<title>Segment Any Change</title>
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="assets/css/mediumish.css" rel="stylesheet">
+	<!-- Chart JS Template -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+<body>
+
+<!-- Begin Nav -->
+<nav class="navbar navbar-light fixed-top bg-white shadow-sm py-3">
+  <div class="container d-flex align-items-center justify-content-between w-100">
+    
+    <!-- Left side: Logo + Title -->
+    <div class="d-flex align-items-center">
+      <img src="./assets/img/logo_stis.png" alt="logo" height="40" class="mr-3">
+      <div>
+        <h5 class="mb-0 font-weight-bold">Segment Any Change</h5>
+		<small class="text-muted">for Urban Change Detection</small>
+      </div>
+    </div>
+
+    <!-- Right side: Navigation -->
+    <div class="d-flex align-items-center">
+      <ul class="navbar-nav d-flex flex-row" style="gap: 1.5rem;">
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link active" href="hyperparameter.html">Best Hyperparameter</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="sentinel-2.html">Sentinel-2</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="worldview-3.html">WorldView-3</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="https://github.com/"><i class="fab fa-github fa-lg"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Nav -->
+
+
+
+
+
+<!-- Begin Article
+================================================== -->
+<div class="container px-5">
+	<div class="row">
+
+		<!-- Begin Post -->
+		<div class="col-md-12 col-md-offset-2 col-xs-12">
+
+			<!-- Begin Post Content -->
+			<div class="article-post">
+
+				<div class="city-introduction" style="padding-top: 1.5rem;">
+					<h1 class="section-title"><b>Skenario Input</b></h1>
+					<p style="text-align: justify; font-size: 13pt;">
+						Penelitian ini melakukan analisis sensitivitas terhadap berbagai kombinasi hyperparameter yang digunakan dalam dua komponen utama, yaitu Segment Anything Model (SAM) dan Segment Any Change (SAC). Tujuannya adalah untuk mengetahui konfigurasi model terbaik pada setiap jenis input citra (Sentinel-2 dan WorldView-3) dalam mendeteksi penambahan area terbangun pada citra satelit optik. Gambar 5 menunjukkan bahwa citra diambil pada dua waktu berbeda, yaitu Juni 2021 (pre-changes) dan Maret 2022 (post-changes) untuk mengamati perubahan spasial yang terjadi, terutama penambahan area terbangun. Grid yang digunakan berlokasi di Kawasan Pantai Indah Kapuk 1 (PIK 1), Kelurahan Kamal Muara, Kecamatan Penjaringan, Kota Jakarta Utara. Untuk pengujian sensitivitas, digunakan lima skenario berdasarkan kombinasi jenis citra dan mekanisme SAC.
+					</p>
+ 
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/skenariohype.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 750px; display: block; margin: 0 auto;">
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Pengujian dilakukan untuk mengevaluasi sensitivitas model terhadap berbagai pengaturan hyperparameter. Setiap hyperparameter diuji dengan mengubah nilainya dalam rentang tertentu, sementara hyperparameter lainnya dipertahankan pada nilai default. Rincian hyperparameter, nilai default dan rentang percobaannya disajikan pada tabel berikut.
+					</p>
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/ruanghype.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 750px; display: block; margin: 0 auto;">
+					</figure>
+					<br>
+				</div>
+				
+				<div class="urban-sensing-fusion" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Hasil Sensitivity Analysis</b></h1>
+					<h4><b>1. Point Per Side</b></h4>
+					<blockquote style="margin-left: 1.7rem; font-size: 13pt; text-align: justify;">
+						Hyperparameter ini digunakan untuk mengatur jumlah titik grid yang digunakan untuk menghasilkan mask pada gambar. Semakin banyak titik, semakin detail mask yang dihasilkan, tetapi juga meningkatkan kebutuhan komputasi dan penggunaan memori.
+					</blockquote>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/pointperside.png" style="width: 100%; max-width: 540px; padding: 0rem 1rem 0rem 1rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Hasil analisis menunjukkan bahwa peningkatan jumlah titik grid hingga 32 meningkatkan metrik evaluasi, baik untuk citra Sentinel-2 maupun WorldView-3. Namun, setelah titik 32, performa mulai menurun atau stagnan, menandakan titik optimal pada nilai 32. Peningkatan jumlah titik memberikan detail mask yang lebih tinggi, tetapi juga meningkatkan beban komputasi.
+							</p>
+						</div>
+					</div>
+
+					<h4><b>2. Stability Score Threshold</b></h4>
+					<blockquote style="margin-left: 1.7rem; font-size: 13pt; text-align: justify;">
+						Hyperparameter ini digunakan untuk menetapkan ambang stabilitas untuk penentuan kualitas mask. Dengan nilai ambang tinggi, hanya area yang sangat stabil yang akan dianggap sebagai perubahan, sehingga meningkatkan keakuratan dengan menghindari noise.
+					</blockquote>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/stabscorethres.png" style="width: 100%; max-width: 540px; padding: 0rem 1rem 0rem 1rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Hasil evaluasi menunjukkan bahwa nilai ambang stabilitas 0,95 merupakan yang paling optimal untuk semua jenis citra, terutama pada WorldView-3 yang menunjukkan tren peningkatan kinerja segmentasi seiring kenaikan threshold. Sebaliknya, Sentinel-2 menunjukkan ketahanan performa meskipun threshold bervariasi.
+							</p>
+						</div>
+					</div>
+
+					<h4><b>3. Change Confidence Threshold</b></h4>
+					<blockquote style="margin-left: 1.7rem; font-size: 13pt; text-align: justify;">
+						Hyperparameter ini digunakan untuk menentukan ambang batas kepercayaan untuk perubahan. Ambang ini membantu mengabaikan perubahan yang dianggap kurang signifikan dalam gambar, memastikan bahwa hanya perubahan yang substansial yang terdeteksi.
+					</blockquote>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/changeconthres.png" style="width: 100%; max-width: 540px; padding: 0rem 1rem 0rem 1rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Hasil evaluasi menunjukkan bahwa untuk Sentinel-2, performa segmentasi cenderung meningkat seiring kenaikan nilai threshold. Pada WorldView-3, terdapat trade-off antara precision dan recall, di mana F1-score dan IoU optimal dicapai pada threshold 145, sebelum akhirnya menurun. Threshold ini penting untuk menghindari deteksi perubahan yang tidak substansial.
+							</p>
+						</div>
+					</div>
+
+					<h4><b>4. Object Similarity Threshold</b></h4>
+					<blockquote style="margin-left: 1.7rem; font-size: 13pt; text-align: justify;">
+						Hyperparameter ini digunakan untuk mengatur ambang batas kesamaan objek. Nilai rendah memungkinkan lebih banyak objek dianggap mirip, sementara nilai tinggi membuat model lebih selektif. Hyperparameter ini hanya diuji untuk mekanisme SAC dengan point query
+					</blockquote>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/objsimthres.png" style="width: 100%; max-width: 540px; padding: 0rem 1rem 0rem 1rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Pengujian hanya dilakukan pada WorldView-3 dengan mekanisme point query dikarenakan mekanisme point query gagal menghasilkan mask perubahan pada citra Sentinel-2. Hasil evaluasi menunjukkan bahwa performa optimal tercapai pada threshold 70, di mana precision dan recall menemukan keseimbangan yang baik, ditunjukkan oleh puncak F1-score dan IoU.
+							</p>
+						</div>
+					</div>
+
+					<h4><b>5. Use Normalized Feature</b></h4>
+					<blockquote style="margin-left: 1.7rem; font-size: 13pt; text-align: justify;">
+						Hyperparameter ini digunakan untuk menentukan apakah embedding citra akan digunakan dalam bentuk ternormalisasi atau tidak. 
+						True: Invers normalization image embedding.
+						False: Menggunakan langsung image embedding yang ternormalisasi.
+					</blockquote>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/normalize.png" style="width: 100%; max-width: 540px; padding: 0rem 1rem 0rem 1rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Hasil evaluasi menunjukkan untuk Sentinel-2, hasil evaluasi menunjukkan bahwa menggunakan embedding yang ternormalisasi (False) menghasilkan performa segmentasi yang lebih baik. Sebaliknya, pada WorldView-3, penggunaan invers normalization (True) meningkatkan performa secara signifikan, terutama pada nilai F1-score dan precision.
+							</p>
+						</div>
+					</div>
+
+					<h4><b>6. Match Histogram</b></h4>
+					<blockquote style="margin-left: 1.7rem; font-size: 13pt; text-align: justify;">
+						Hyperparameter ini digunakan untuk mengaktifkan penyamaan histogram (histogram matching) antara dua gambar sebelum dihasilkan mask pada SAM untuk mengurangi efek perbedaan pencahayaan. Dapat meningkatkan akurasi perubahan yang sebenarnya bukan karena iluminasi.
+					</blockquote>
+					<div class="image-paragraph-container">
+						<figure>
+							<img src="./assets/img/matchhist.png" style="width: 100%; max-width: 540px; padding: 0rem 1rem 0rem 1rem;">
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 12pt;">
+							Hasil analisis menunjukkan bahwa mengaktifkan fitur ini justru menurunkan performa segmentasi pada kedua jenis citra (Sentinel-2 dan WorldView-3). Hal ini menunjukkan bahwa perbedaan iluminasi tidak berdampak besar, dan histogram matching tidak diperlukan. Nilai optimalnya adalah False.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="city-introduction" style="padding-top: 1.5rem;">
+					<h1 class="section-title"><b>Konfigurasi Terbaik Hyperparameter dan Mekanisme Segment Any Change</b></h1>
+
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/besthype.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 550px; display: block; margin: 0 auto;">
+					</figure>
+				</div>
+			</div>
+			<!-- End Post Content -->
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+<div class="hideshare"></div>
+
+<!-- Begin Footer
+================================================== -->
+<div class="container">
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2025 Naufal Fadli Muzakki
+		</p>
+		<p class="pull-right">
+			 Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+<!-- End Footer
+================================================== -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="assets/js/mediumish.js"></script>
+
+</body>
+</html>

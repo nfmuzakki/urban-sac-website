@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="./assets/img/logo_stis.png">
+	<title>Segment Any Change</title>
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="assets/css/mediumish.css" rel="stylesheet">
+	<!-- Chart JS Template -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+<body>
+
+<!-- Begin Nav -->
+<nav class="navbar navbar-light fixed-top bg-white shadow-sm py-3">
+  <div class="container d-flex align-items-center justify-content-between w-100">
+    
+    <!-- Left side: Logo + Title -->
+    <div class="d-flex align-items-center">
+      <img src="./assets/img/logo_stis.png" alt="logo" height="40" class="mr-3">
+      <div>
+        <h5 class="mb-0 font-weight-bold">Segment Any Change</h5>
+		<small class="text-muted">for Urban Change Detection</small>
+      </div>
+    </div>
+
+    <!-- Right side: Navigation -->
+    <div class="d-flex align-items-center">
+      <ul class="navbar-nav d-flex flex-row" style="gap: 1.5rem;">
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="hyperparameter.html">Best Hyperparameter</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="sentinel-2.html">Sentinel-2</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link active" href="worldview-3.html">WorldView-3</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="https://github.com/"><i class="fab fa-github fa-lg"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Nav -->
+
+
+
+<!-- Begin Article
+================================================== -->
+<div class="container px-5">
+	<div class="row">
+
+		<!-- Begin Post -->
+		<div class="col-md-12 col-md-offset-2 col-xs-12">
+
+			<!-- Begin Post Content -->
+			<div class="article-post">
+				<div class="urban-sensing-fusion" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Citra WorldView-3</b></h1>
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/citrawv3.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 750px; display: block; margin: 0 auto;">
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Melalui citra resolusi sangat tinggi, perubahan kawasan perkotaan dapat diamati secara langsung melalui perbedaan visual bentuk objek seperti bangunan, jalan, atau pola permukiman. Citra diambil dalam bentuk pasangan multitemporal (citra pada waktu t dan t+1) yang kemudian dipilih pada tiga level zoom berbeda seperti pada tabel untuk mengevaluasi pengaruh tingkat detail citra terhadap performa deteksi perubahan.</p>
+
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/tabelzoom.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 350px; display: block; margin: 0 auto;">
+					</figure>
+
+				</div>
+
+				<div class="city-introduction" style="padding-top: 1.5rem;">
+					<h1 class="section-title"><b>Hasil Segmentasi Perubahan Area Terbangun menggunakan Segment Any Change</b></h1>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Pada eksperimen segmentasi perubahan menggunakan SAC dengan input citra satelit optik resolusi sangat tinggi WorldView-3, dilakukan pengujian terhadap tiga level zoom berbeda (level 1, 2, dan 3). 
+					</p>
+ 
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/hasilwv3.png" alt="Ilustrasi Pertumbuhan Perkotaan" style="width: 100%; max-width: 450px; display: block; margin: 0 auto;">
+						<figcaption style="font-size: 12px; color: #555; margin-top: 0.5rem;">
+							Catatan: True Positive ditunjukkan dengan warna putih, True Negative ditunjukkan dengan warna hitam, dan False Positive + False Negative ditunjukkan dengan warna merah.
+						</figcaption>
+					</figure>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						 Hasil segmentasi pada Gambar 13, secara jelas terlihat bahwa level zoom 3 memberikan segmentasi perubahan yang paling mendekati ground truth, dengan akurasi spasial yang tinggi. Warna putih (true positive) pada output lebih dominan pada level zoom 3, sedangkan pada level 1 dan 2 model banyak menghasilkan area merah (false positive dan false negative), yang menunjukkan kesalahan dalam deteksi perubahan. 
+					</p>
+					<p style="text-align: justify; font-size: 13pt;">
+						Evaluasi kuantitatif menggunakan metrik F1-score, IoU, precision, dan recall juga menunjukkan hal yang sama, di mana Level zoom 3 mencatatkan nilai evaluasi tertinggi pada seluruh metrik, F1-score sebesar 82,29%, IoU sebesar 69,90%, precision sebesar 81,78%, dan recall sebesar 82,80%. Sebaliknya, level zoom 2 dan 1 mengalami penurunan tajam di seluruh metrik, masing-masing hanya menghasilkan F1-score sebesar 44,76% dan 31,58%. Penurunan performa ini menunjukkan bahwa ketika model SAC kehilangan konteks spasial akibat tampilan zoom yang terlalu jauh, kinerjanya menurun drastis karena tidak mampu menangkap detail perubahan secara akurat.
+					</p>
+				</div>
+
+				<div class="data-fusion-introduction" style="padding-top: 2rem;">
+					<h1 class="section-title" style="padding-bottom: 1.5rem;"><b>Estimasi Luas Pertumbuhan Kawasan Perkotaan Jakarta Utara dengan Segment Any Change berbasis NDBI</b></h1>
+
+					<div class="image-paragraph-container">
+						<figure style="text-align: center; margin: 1.5rem auto;">
+						<video autoplay muted loop playsinline style="width: 100%; max-width: 550px; display: block; margin: 0 auto;">
+							<source src="./assets/vid/samplingwv.mp4" type="video/mp4">
+							Browser Anda tidak mendukung tag video.
+						</video>
+						</figure>
+
+						<div class="paragraph-side">
+							<p style="text-align: justify; font-size: 13pt;">
+								Estimasi dilakukan dengan metode stratified random sampling, di mana satu sampel grid diambil dari setiap kelurahan untuk mewakili total 31 kelurahan di wilayah tersebut. Hasil estimasi luas pertumbuhan kawasan perkotaan dari model SAC kemudian dibandingkan dengan hasil perhitungan luas area yang berubah dari kategori non-built menjadi built pada peta tutupan lahan Dynamic World V1 dan ESRI Land Cover. 
+							</p>
+						</div>
+					</div>
+
+					<p style="text-align: justify; font-size: 13pt;">
+						Hasil evaluasi menunjukkan bahwa metode Segment Any Change menghasilkan estimasi yang paling akurat, Model ini unggul dalam semua metrik evaluasi estimasi, yaitu MAE (0,1259), MSE (0,1137), RMSE (0,3372), dan R-square (40,31%), Sebaliknya, metode berbasis Dynamic World V1 dan ESRI Land Cover menunjukkan performa yang jauh lebih rendah, bahkan menghasilkan nilai R-square negatif, yang mengindikasikan hubungan yang sangat lemah dengan data aktual (ground truth), Dengan demikian, SAC berbasis WorldView-3 terbukti menjadi pendekatan yang lebih andal untuk memetakan dan memprediksi pertumbuhan kawasan perkotaan.
+					</p>
+
+					<figure style="text-align: center; margin: 1.5rem auto;">
+						<img src="./assets/img/estimasiwv3.png" alt="Kategori Resolusi Spasial" style="width: 100%; max-width: 450px; display: block; margin: 0 auto;">
+					</figure>
+				</div>
+
+				
+			</div>
+			<!-- End Post Content -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+<div class="hideshare"></div>
+
+<!-- Begin Footer
+================================================== -->
+<div class="container">
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2025 Naufal Fadli Muzakki
+		</p>
+		<p class="pull-right">
+			 Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+<!-- End Footer
+================================================== -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="assets/js/mediumish.js"></script>
+
+</body>
+</html>
